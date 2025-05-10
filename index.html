@@ -230,7 +230,7 @@
                 <h3>Surface Treatment</h3>
               </a>
               <p>Professional surface treatments for both buildings and natural stone to protect and enhance their aesthetic appeal.</p>
-                  <a href="#" class="stretched-link"></a>
+                  <a href="javascript:void(0)" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -620,7 +620,7 @@
  <!-- Vendor JS Files from CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> <!-- بديل php-email-form -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/lib/typed.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/waypoints/lib/noframework.waypoints.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
@@ -653,6 +653,40 @@
     }
   });
 </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const itemHeader = item.querySelector('h3');
+        
+        itemHeader.addEventListener('click', () => {
+          // Close all other items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('faq-active')) {
+              otherItem.classList.remove('faq-active');
+              otherItem.querySelector('.faq-toggle').classList.remove('bi-chevron-down');
+              otherItem.querySelector('.faq-toggle').classList.add('bi-chevron-right');
+            }
+          });
+          
+          // Toggle current item
+          item.classList.toggle('faq-active');
+          const toggle = item.querySelector('.faq-toggle');
+          if (item.classList.contains('faq-active')) {
+            toggle.classList.remove('bi-chevron-right');
+            toggle.classList.add('bi-chevron-down');
+          } else {
+            toggle.classList.remove('bi-chevron-down');
+            toggle.classList.add('bi-chevron-right');
+          }
+        });
+      });
+    });
+  </script>
+
 </body>
 
 </html>
